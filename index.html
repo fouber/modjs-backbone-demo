@@ -1,10 +1,18 @@
 <html>
 <head>
     <title>backbone</title>
-    <script type="text/javascript" src="lib/mod.js"></script>
-    <script type="text/javascript" src="lib/backbone.js"></script>
+    <script type="text/javascript" src="lib/lib.js"></script>
 </head>
 <body>
-    
+    <div id="sidebar">hello world</div>
+    <script type="text/javascript">
+        require.async('model/Sidebar', function(Sidebar){
+            var sidebar = new Sidebar;
+            sidebar.on('change:color', function(model, color){
+                $('#sidebar').css({background: color});
+            });
+            sidebar.set({color:'red'});
+        });
+    </script>
 </body>
 </html>
